@@ -1,31 +1,78 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model 
+@{
+    ViewBag.Title = "POC_MVC";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="page-header">
+    <h2>POC_API</h2>
 </div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+<div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Lista osób w bazie
+                </div>   <!--en dof panel-heading -->
+                <div class="panel-body table-responsive">
+                    <table class="table table-bordered" id="Table">
+                        <thead>
+                            <tr>
+                                <th style="display:none;"></th>
+                                <th>Imię</th>
+                                <th>Nazwisko</th>
+                            </tr>   <!--end of table-row -->
+                        </thead>
+                        <tbody id="tableBody">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FirstName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Age)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Active)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>   <!--end of table -->
+                </div> <!--end of Panel-body -->
+            </div> <!--end of Panel -->
+        </div>
+        <div class="col-lg-6 col-sm-8 text-left">
+            <form id="mainForm">
+                <input type="hidden" name="_id" value="" id="_id" />
+                <div class="form-group">
+                    <label for="firstNameTB">Imię:</label>
+                    <input type="text" name="FirstName" class="form-control" id="firstNameTB">
+                </div>
+                <div class="form-group">
+                    <label for="lastNameTB">Nazwisko:</label>
+                    <input type="text" name="LastName" class="form-control" id="lastNameTB">
+                </div>
+                <div class="form-group">
+                    <label for="phoneTB">Telefon:</label>
+                    <input type="text" name="PhoneNumber" class="form-control" id="phoneTB">
+                </div>
+                <div class="form-group">
+                    <label for="adressTB">Adres:</label>
+                    <input type="text" name="Adress" class="form-control" id="adressTB">
+                </div>
+                <div data-inline="true">
+                    <button type="button" style="display:none;" onclick="addButtonClick('Zaktualizowano pomyślnie!')" class="btn btn-default" id="updateButton">Aktualizuj</button>
+                    <button type="button" onclick="addButtonClick('Dodano pomyślnie!')" class="btn btn-default" id="addButton">Dodaj</button>
+                    <button type="button" style="display:none;" onclick="deleteButtonClick()" class="btn btn-default" id="deleteButton">Usuń</button>
+                    <button type="button" onclick="clearButtonClick()" class="btn btn-default" id="clearButton">Wyczyść</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-2 text-left hidden-lg">
+        </div>
     </div>
 </div>
