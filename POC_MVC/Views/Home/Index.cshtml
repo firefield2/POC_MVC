@@ -22,7 +22,7 @@
                         <tbody id="tableBody">
                             @foreach (var item in Model)
                             {
-                                <tr onclick="location.href = @(Url.Action("test","ShowPerson", "Home", new { personId = item._id }, null))">
+                                <tr onclick="location.href = '@(Url.Action("ShowPerson","Home", new { @personId = item._id }, null))'">
                                     <td style="display:none;">
                                         @Html.DisplayFor(modelItem => item._id)
                                     </td>

@@ -17,10 +17,11 @@ namespace POC_MVC.Controllers
             return View(list);
         }
 
-        public ActionResult ShowPerson(ObjectId personId)
+        public ActionResult ShowPerson(string personId)
         {
+            ObjectId id = new ObjectId(personId);
             Repository<Person> db = new Repository<Person>("persons");
-            Person person = db.FindById(personId);
+            Person person = db.FindById(id);
             return View(person);
         }
 
