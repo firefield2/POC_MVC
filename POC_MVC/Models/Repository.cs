@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace POC_API.Models
+namespace POC_MVC.Models
 {
     public class Repository<T> where T : IBson
     {

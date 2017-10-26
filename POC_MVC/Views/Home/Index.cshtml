@@ -1,12 +1,9 @@
-﻿@model 
+﻿@model List<POC_MVC.Models.Person>
 @{
     ViewBag.Title = "POC_MVC";
 }
 
-<div class="page-header">
-    <h2>POC_API</h2>
-</div>
-<div>
+<div >
     <div class="row">
         <div class="col-lg-4 col-sm-4">
             <div class="panel panel-primary">
@@ -25,18 +22,15 @@
                         <tbody id="tableBody">
                             @foreach (var item in Model)
                             {
-                                <tr>
+                                <tr onclick="location.href = @(Url.Action("test","ShowPerson", "Home", new { personId = item._id }, null))">
+                                    <td style="display:none;">
+                                        @Html.DisplayFor(modelItem => item._id)
+                                    </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.FirstName)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.LastName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Age)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Active)
                                     </td>
                                 </tr>
                             }

@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace POC_API.Models
+namespace POC_MVC.Models
 {
     public interface IBson
     {

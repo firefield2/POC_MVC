@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using POC_MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,16 @@ namespace POC_MVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Repository<Person> db = new Repository<Person>("persons");
+            List<Person> list = db.List().ToList();
+            return View(list);
+        }
+
+        public ActionResult ShowPerson(ObjectId personId)
+        {
+            Repository<Person> db = new Repository<Person>("persons");
+            Person person = db.FindById(personId);
+            return View(person);
         }
 
         public ActionResult About()
